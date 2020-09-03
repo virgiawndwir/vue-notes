@@ -12,12 +12,12 @@
 
       <div class="frame-notes">
         <button @click="newNote" class="bg-success btn btn-new-note">+ Add note</button>
-        <ListNotes :propNotes="notess" :propEditNote="editNote" />
+        <ListNotes :propEditNote="editNote" />
       </div>
     </div>
 
     <div class="form">
-        <FormNotes :propSaveNote="saveNote" :propDataForm="dataForm" :propUpdateNote="updateNote" :propRemoveNote="removeNote" />
+        <FormNotes :propSaveNote="saveNote" :propUpdateNote="updateNote" :propRemoveNote="removeNote" />
     </div>
 
   </div>
@@ -32,19 +32,7 @@ export default {
   name: 'App',
   data: function(){
     return {
-      notess: [
-        {
-          id: 1,
-          title: 'Judul',
-          description: 'Ini isi dari judul'
-        },
-        {
-          id: 2,
-          title: 'Baru',
-          description: 'Ini isi dari baru'
-        }
-      ],
-      dataForm: {}
+      
     }
   },
   components: {
@@ -74,9 +62,6 @@ export default {
       }
       this.notess.push(newNote)
       this.editNote(newId)
-    },
-    editNote(id){
-      this.dataForm = this.notess.find(note => note.id === id)
     },
     updateNote(id, title, description){
       let noteIndex = this.notess.findIndex(note => note.id === id)
