@@ -17,7 +17,7 @@
     </div>
 
     <div class="form">
-        <FormNotes :propSaveNote="saveNote" />
+        <FormNotes />
     </div>
 
   </div>
@@ -41,27 +41,12 @@ export default {
   },
   methods: {
     newNote(){
-      this.dataForm = {
+      let dataForm = {
         id: 0,
         title: '',
         description: ''
       }
-    },
-    saveNote(title, description){
-      let newId = 0
-      if(this.notess.length === 0){
-        newId = 1
-      }else{
-        newId = this.notess[this.notess.length - 1].id + 1
-      }
-
-      let newNote = {
-        'id' : newId,
-        'title' : title,
-        'description' : description
-      }
-      this.notess.push(newNote)
-      this.editNote(newId)
+      this.$root.$emit('emitForm', dataForm)
     }
   }
 }

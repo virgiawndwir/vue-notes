@@ -42,6 +42,16 @@ export default {
       let dataForm = this.notess.find(note => note.id === id)
       this.$root.$emit('emitForm', dataForm)
     },
+    createNewId(){
+      let newId = 0
+      if(this.notess.length === 0){
+        newId = 1
+      }else{
+        newId = this.notess[this.notess.length - 1].id + 1
+      }
+
+      return newId
+    }
   },
   mounted(){
     this.$root.$on('emitRemoveNote', data => {
@@ -53,6 +63,17 @@ export default {
       let noteIndex = this.notess.findIndex(note => note.id === data.id)
       this.notess[noteIndex].title = data.title
       this.notess[noteIndex].description = data.description
+    })
+
+    this.$root.$on('emitSaveNote', data => {
+      let newId = this.createNewId()
+      let newNote = {
+        id : newId,
+        'title' : data.title,
+        'description' : data.description
+      }
+      this.notess.push(newNote)
+      this.editNote(newId)
     })
   }
 }
