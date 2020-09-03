@@ -12,12 +12,12 @@
 
       <div class="frame-notes">
         <button @click="newNote" class="bg-success btn btn-new-note">+ Add note</button>
-        <ListNotes :propEditNote="editNote" />
+        <ListNotes />
       </div>
     </div>
 
     <div class="form">
-        <FormNotes :propSaveNote="saveNote" :propUpdateNote="updateNote" />
+        <FormNotes :propSaveNote="saveNote" />
     </div>
 
   </div>
@@ -62,11 +62,6 @@ export default {
       }
       this.notess.push(newNote)
       this.editNote(newId)
-    },
-    updateNote(id, title, description){
-      let noteIndex = this.notess.findIndex(note => note.id === id)
-      this.notess[noteIndex].title = title
-      this.notess[noteIndex].description = description
     }
   }
 }
