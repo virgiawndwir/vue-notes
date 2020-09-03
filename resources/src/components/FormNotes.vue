@@ -4,7 +4,7 @@
     <form @submit="submitNote">
       <div class="menu">
         <button type="button" class="bg-danger btn btn-delete" @click="submitRemove">Delete</button>
-        <button type="submit" class="bg-success btn btn-save">Success</button>
+        <button type="submit" class="bg-success btn btn-save">Save</button>
       </div>
 
       <div class="content">
