@@ -42,6 +42,12 @@ export default {
       let dataForm = this.notess.find(note => note.id === id)
       this.$root.$emit('emitForm', dataForm)
     },
+  },
+  mounted(){
+    this.$root.$on('emitRemoveNote', data => {
+      let noteIndex = this.notess.findIndex(note => note.id === data.id)
+      this.notess.splice(noteIndex, 1)
+    })
   }
 }
 </script>
